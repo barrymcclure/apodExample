@@ -5,6 +5,12 @@
 *.so
 *.dylib
 
+.idea/
+
+.DS_Store
+#environment scripts
+*Env
+
 # Test binary, build with `go test -c`
 *.test
 
