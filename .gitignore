@@ -5,9 +5,12 @@
 *.so
 *.dylib
 
+#intellij ide project info
 .idea/
 
+#mac files
 .DS_Store
+
 #environment scripts
 *Env
 

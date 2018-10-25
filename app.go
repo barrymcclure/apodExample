@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"time"
 	"os"
 )
 
@@ -12,7 +11,7 @@ func main() {
 	mux := http.NewServeMux()
 	fs := http.FileServer(http.Dir("static"))
 	t := "https://api.nasa.gov/planetary/apod?api_key=%s"
-	apodServiceUrl := fmt.Sprintf(t,os.Getenv("NASA_API"))
+	apodServiceUrl := fmt.Sprintf(t, os.Getenv("NASA_API"))
 	fmt.Println(apodServiceUrl)
 
 	//mux.HandleFunc("/", greet)
