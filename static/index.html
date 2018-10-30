@@ -4,16 +4,43 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>APOD GoLang Example </title>
+    <title>Astronomy Picture of the Day</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style/bootstrap.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="js/vue.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </head>
 
-<body>
-    <div class="container-fluid">
-        <h1>Hello!</h1>
+<body class="bg-dark">
+    <div class="container-fluid" id="app">
+        <h1 class="d-block text-primary text-center">This is NASA's astronomy picture of the day.</h1>
+        <h2 class="d-block text-primary text-center">{{apod.title}}</h2>
+        <div class="d-block m-5 text-secondary">{{ apod.explanation }}</div>
+        <br />
+        <!-- Need a place for the image -->
+        <img class="d-block mx-auto" style="width: 500px" v-bind:src="apod.url" />
     </div>
 </body>
+
+<script type="application/javascript">
+
+    // Vue component
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            apod: {
+                title: '',
+                explanation: '',
+                url: ''
+            }
+        }
+    });
+
+    $.getJSON('/api/apod', function (data) {
+        vm.apod = data;
+    })
+
+</script>
 
 </html>

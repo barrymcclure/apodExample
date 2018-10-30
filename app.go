@@ -1,20 +1,23 @@
 package main
 
 import (
+	"apodExample/apod_api"
 	"fmt"
 	"net/http"
 	"os"
+
+	"github.com/gorilla/mux"
 )
 
 func main() {
+	router := mux.NewRouter()
 
-	mux := http.NewServeMux()
+	//mux := http.NewServeMux()
 	fs := http.FileServer(http.Dir("static"))
 	t := "https://api.nasa.gov/planetary/apod?api_key=%s"
-	apodServiceUrl := fmt.Sprintf(t, os.Getenv("NASA_API"))
-	fmt.Println(apodServiceUrl)
-
-	//mux.HandleFunc("/", greet)
-	mux.Handle("/", fs)
-	http.ListenAndServe(":8080", mux)
+	apodServiceURL := fmt.Sprintf(t, os.Getenv("NASA_API"))
+	fmt.Println(apodServiceURL)
+	router.HandleFunc("/api/apod", apod_api.GetApod).Methods("GET")
+	router.PathPrefix("/").Handler(http.StripPrefix("/", fs))
+	http.ListenAndServe(":8080", router)
 }
