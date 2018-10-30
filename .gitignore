@@ -11,6 +11,9 @@
 #mac files
 .DS_Store
 
+#google appengine files
+app.yaml
+
 #environment scripts
 *Env
 
