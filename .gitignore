@@ -13,7 +13,6 @@
 
 #google appengine files
 app.yaml
-Dockerfile
 
 #environment scripts
 *Env
