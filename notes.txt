@@ -1,0 +1,23 @@
+Add caching...
+	key to keep last fetch
+	key to keep data object from api
+
+Plan:
+	use go-redis to attach to a redis server and use it for caching.
+
+
+Add ability to react to media type within the data.. image or video
+
+select a day, 
+
+
+learning - 
+	docker images...
+	docker cross communication   (the main reason for using redis, instead of an internal map for caching)
+
+
+add logging...
+(what are best practices for this?)
+
+the cache 'service' should look in cache, if it is expired or empty it should call a passed in function to 
+get the value it is supposed to cache.  once the value is retreived, creat the key and store in redis server.
