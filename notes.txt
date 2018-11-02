@@ -2,8 +2,8 @@ Add caching...
 	key to keep last fetch
 	key to keep data object from api
 
-Plan:
-	use go-redis to attach to a redis server and use it for caching.
+**Plan:
+**	use go-redis to attach to a redis server and use it for caching.
 
 
 Add ability to react to media type within the data.. image or video
