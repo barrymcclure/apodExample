@@ -19,8 +19,12 @@
         <div class="d-block m-5 text-secondary">{{ apod.explanation }}</div>
         <br />
         <!-- Need a place for the image -->
-        <img class="d-block mx-auto" style="width: 500px" v-bind:src="apod.url" />
+
+        <img v-if="apod.media_type == 'image'" class="d-block mx-auto" style="width: 500px" v-bind:src="apod.url" />
+        <iframe v-else width="1280" height="720" v-bind:src="apod.url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin:0 auto; display:block;"></iframe>
     </div>
+
+
 </body>
 
 <script type="application/javascript">
@@ -32,7 +36,8 @@
             apod: {
                 title: '',
                 explanation: '',
-                url: ''
+                url: '',
+                media_type: ''
             }
         }
     });

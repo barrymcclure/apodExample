@@ -31,7 +31,7 @@ func (c *Cacher) FetchFromCache(key string, callback func() string) string {
 	val, err := redisClient.Get(key).Result()
 	if err == redis.Nil {
 		val = callback()
-		redisClient.Set(key, val, 0).Err()
+		redisClient.Set(key, val, 300*1000000000).Err()
 	} else if err != nil {
 		// not a good thing to do
 		panic(err)
@@ -39,3 +39,4 @@ func (c *Cacher) FetchFromCache(key string, callback func() string) string {
 
 	return val
 }
+
